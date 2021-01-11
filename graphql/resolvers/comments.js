@@ -7,7 +7,7 @@ const Post = require('../../models/Post');
 module.exports = {
     Mutation: {
         createComment: async (_, { postId, body }, context) => {
-            const { username } = checkAuth(context);
+            const { username } = await checkAuth(context);
             if(body.trim() === ""){
                 throw new UserInputError('Empty comment', {
                     errors: {
